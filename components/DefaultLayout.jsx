@@ -7,6 +7,7 @@ import cfg from '../data/config.js';
 
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
+import LanguageMarkup from './LanguageMarkup.jsx';
 
 const DefaultLayout = ({ title, description, author, image, type = 'website', children }) => {
   const { t } = useTranslation('common');
@@ -18,12 +19,13 @@ const DefaultLayout = ({ title, description, author, image, type = 'website', ch
   const prefix = locale === 'ru' ? `/${locale}` : '';
   const url = `${cfg.siteUrl}${prefix}${path}`;
   const imageUrl = `${cfg.siteUrl}${image}`;
-
   return (
     <>
+      <LanguageMarkup />
       <Head>
         <title>{fullTitle}</title>
         <link rel="icon" href={cfg.favicon} />
+        <meta name={path} content={locale} />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="author" content={metaAuthor} />
         <meta name="description" content={metaDescription} />
